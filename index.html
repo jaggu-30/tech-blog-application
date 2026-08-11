@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Inkly — A responsive blog platform for stories worth sharing. Read, write, and connect with a community of curious minds." />
+    <title>Inkly | Stories worth sharing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#" id="brand-link" aria-label="Inkly home">inkly<span>.</span></a>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+      <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+        <a href="#" data-page="home" class="nav-link active">Home</a>
+        <a href="#" data-page="explore" class="nav-link">Explore</a>
+        <a href="#" data-page="dashboard" class="nav-link">Dashboard</a>
+      </nav>
+      <!-- Logged-out actions -->
+      <div class="header-actions" id="header-actions-out">
+        <button class="text-button" id="btn-login-header" data-page="login">Log in</button>
+        <button class="button button-small" id="btn-register-header" data-page="register">Get started</button>
+      </div>
+      <!-- Logged-in actions -->
+      <div class="header-actions hidden" id="header-actions-in">
+        <span class="user-greeting">Hi, <strong id="header-user-name">writer</strong></span>
+        <button class="text-button" id="btn-logout">Log out</button>
+      </div>
+    </header>
+
+    <main>
+      <!-- ========== HOME PAGE ========== -->
+      <section id="home" class="page active-page">
+        <section class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">A home for curious minds</p>
+            <h1>Stories that leave a <em>mark.</em></h1>
+            <p class="hero-text">Read thoughtful ideas, share your perspective, and grow with a community that loves learning out loud.</p>
+            <div class="hero-actions">
+              <button class="button" id="btn-start-writing" data-page="register">Start writing <span>→</span></button>
+              <a class="link-arrow" href="#" data-page="explore" id="btn-explore-stories">Explore stories <span>↓</span></a>
+            </div>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="sun"></div><div class="arch arch-one"></div><div class="arch arch-two"></div>
+            <div class="quote-card">"The best ideas<br />begin as a draft."</div>
+          </div>
+        </section>
+
+        <section class="content-section">
+          <div class="section-heading">
+            <div><p class="eyebrow">Fresh from the community</p><h2>Featured stories</h2></div>
+            <a href="#" class="link-arrow" data-page="explore" id="btn-view-all">View all <span>→</span></a>
+          </div>
+          <div class="post-grid" id="post-grid"></div>
+        </section>
+
+        <section class="join-banner">
+          <div>
+            <p class="eyebrow">Your voice belongs here</p>
+            <h2>Have a story to tell?</h2>
+            <p>Join thousands of writers sharing what they know, wonder, and imagine.</p>
+          </div>
+          <button class="button button-light" id="btn-join-register" data-page="register">Create an account</button>
+        </section>
+      </section>
+
+      <!-- ========== EXPLORE PAGE ========== -->
+      <section id="explore" class="page explore-page">
+        <div class="explore-header">
+          <p class="eyebrow">Discover new perspectives</p>
+          <h1>Explore stories</h1>
+          <p class="muted">Browse stories from our community — filter by category or just dive in.</p>
+        </div>
+        <div class="category-filters" id="category-filters">
+          <button class="filter-btn active" data-category="all">All</button>
+        </div>
+        <div class="post-grid" id="explore-grid"></div>
+        <div class="hidden" id="explore-empty">
+          <p class="empty-state">No stories found in this category yet. Be the first to write one!</p>
+        </div>
+      </section>
+
+      <!-- ========== LOGIN PAGE ========== -->
+      <section id="login" class="page auth-page">
+        <div class="auth-panel">
+          <button class="back" data-page="home" id="btn-login-back">← Back to home</button>
+          <p class="eyebrow">Welcome back</p>
+          <h1>Log in to Inkly</h1>
+          <p class="muted">Pick up where your ideas left off.</p>
+          <form id="login-form" class="form">
+            <label>Email address<input id="login-email" type="email" placeholder="you@example.com" required /></label>
+            <label>Password<input id="login-password" type="password" placeholder="••••••••" required minlength="6" /></label>
+            <button class="button" type="submit" id="btn-login-submit">Log in</button>
+          </form>
+          <p class="form-footnote">New to Inkly? <button class="inline-button" data-page="register" id="btn-login-to-register">Create an account</button></p>
+        </div>
+      </section>
+
+      <!-- ========== REGISTER PAGE ========== -->
+      <section id="register" class="page auth-page">
+        <div class="auth-panel">
+          <button class="back" data-page="home" id="btn-register-back">← Back to home</button>
+          <p class="eyebrow">Start your journey</p>
+          <h1>Create your account</h1>
+          <p class="muted">It takes less than a minute to join the conversation.</p>
+          <form id="register-form" class="form">
+            <label>Full name<input id="register-name" type="text" placeholder="Alex Morgan" required /></label>
+            <label>Email address<input id="register-email" type="email" placeholder="you@example.com" required /></label>
+            <label>Password<input id="register-password" type="password" placeholder="At least 6 characters" required minlength="6" /></label>
+            <button class="button" type="submit" id="btn-register-submit">Create account</button>
+          </form>
+          <p class="form-footnote">Already have an account? <button class="inline-button" data-page="login" id="btn-register-to-login">Log in</button></p>
+        </div>
+      </section>
+
+      <!-- ========== DASHBOARD PAGE ========== -->
+      <section id="dashboard" class="page dashboard-page">
+        <div class="dashboard-head">
+          <div>
+            <p class="eyebrow">Your workspace</p>
+            <h1>Good morning, <span id="user-name">writer</span>.</h1>
+            <p class="muted">Here is what is happening with your stories.</p>
+          </div>
+          <button class="button" data-page="create" id="btn-write-story">Write a story <span>→</span></button>
+        </div>
+        <div class="stat-grid">
+          <article>
+            <span>Published</span>
+            <strong id="published-count">0</strong>
+            <small>Stories shared</small>
+          </article>
+          <article>
+            <span>Total reads</span>
+            <strong id="total-reads">0</strong>
+            <small>Across all stories</small>
+          </article>
+          <article>
+            <span>Followers</span>
+            <strong>86</strong>
+            <small>People following you</small>
+          </article>
+        </div>
+        <section class="dashboard-list">
+          <div class="section-heading">
+            <h2>Your recent stories</h2>
+            <button class="link-arrow inline-button" data-page="create" id="btn-new-draft">New draft <span>→</span></button>
+          </div>
+          <div id="my-posts" class="my-posts">
+            <p class="empty-state">Your published stories will appear here. Ready when you are.</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- ========== CREATE BLOG PAGE ========== -->
+      <section id="create" class="page create-page">
+        <div class="editor-header">
+          <button class="back" data-page="dashboard" id="btn-create-back">← Dashboard</button>
+          <div>
+            <button class="text-button" id="save-draft">Save draft</button>
+            <button class="button button-small" form="post-form" id="btn-publish">Publish story</button>
+          </div>
+        </div>
+        <form id="post-form" class="editor">
+          <input id="post-title" class="title-input" aria-label="Story title" placeholder="Give your story a title" required />
+          <input id="post-category" class="category-input" aria-label="Category" placeholder="Add a category (e.g. Design)" required />
+          <textarea id="post-content" aria-label="Story content" placeholder="Tell your story..." required></textarea>
+          <p class="editor-tip">Tip: write clearly, keep it personal, and give your reader something useful to take away.</p>
+        </form>
+      </section>
+
+      <!-- ========== POST VIEW PAGE ========== -->
+      <section id="post-view" class="page post-view-page">
+        <button class="back" id="btn-post-back">← Back</button>
+        <article class="post-full" id="post-full">
+          <span class="tag" id="post-view-tag"></span>
+          <h1 id="post-view-title"></h1>
+          <div class="post-meta" id="post-view-meta"></div>
+          <div class="post-body" id="post-view-body"></div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-top">
+        <a class="brand" href="#" id="footer-brand">inkly<span>.</span></a>
+        <p>Made for sharing ideas that matter.</p>
+      </div>
+      <div class="footer-developer">
+        <p class="developer-name">Developed by <strong>Jagadeesh Nayak V</strong></p>
+        <div class="developer-contact">
+          <a href="mailto:jagadeeshnayakv@gmail.com">✉ jagadeeshnayakv@gmail.com</a>
+          <a href="tel:+918147011107">📞 8147011107</a>
+        </div>
+      </div>
+      <p class="footer-copy">© 2026 Inkly — Jagadeesh Nayak V</p>
+    </footer>
+
+    <div id="toast" role="status" aria-live="polite"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
