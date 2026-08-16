@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Environment files
+.env
+backend/.env
+
+# Build output
+frontend/dist/
+dist/
+
+# Database
+backend/data/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Video recording temp files
+video-output/
+
+# Playwright
+playwright-report/
+test-results/
